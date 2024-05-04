@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export const CreateTaskPopup = ({ modal, toggle, save }) => {
+export const CreateTask = ({ modal, toggle, save }) => {
 
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
@@ -11,6 +11,8 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
     const [dueDate, setDueDate] = useState(null);
     const [replacementName, setReplacementName] = useState('');
     const [status, setStatus] = useState('pendiente');
+    const [isCreateDisabled, setIsCreateDisabled] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
 
@@ -31,17 +33,43 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
         }
     };
 
+    const resetFields = () => {
+        setTaskName('');
+        setDescription('');
+        setStartDate(null);
+        setDueDate(null);
+        setReplacementName('');
+        setStatus('pendiente');
+    };
+
+    useEffect(() => {
+
+        const allFieldsFilled = taskName && description && startDate && dueDate && replacementName && status;
+        setIsCreateDisabled(!allFieldsFilled);
+
+    }, [taskName, description, startDate, dueDate, replacementName, status]);
+
     const handleSave = (e) => {
 
         e.preventDefault();
-        let taskObj = {};
-        taskObj["Name"] = taskName;
-        taskObj["Description"] = description;
-        taskObj["startDate"] = startDate;
-        taskObj["DueDate"] = dueDate;
-        taskObj["ReplacementName"] = replacementName;
-        taskObj["Status"] = status;
-        save(taskObj);
+
+        if (!taskName || !description || !startDate || !dueDate || !replacementName || !status) {
+
+            setErrorMessage("Todos los campos son requeridos");
+        } else {
+
+            setErrorMessage('');
+            let taskObj = {
+                Name: taskName,
+                Description: description,
+                startDate: startDate,
+                DueDate: dueDate,
+                ReplacementName: replacementName,
+                Status: status
+            };
+            save(taskObj);
+            resetFields();
+        }
     };
 
     return (
@@ -75,17 +103,16 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
                     <label>Estado</label>
                     <select className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
                         <option value="Pendiente">Pendiente</option>
+                        <option value="Cancelada">Cancelada</option>
                         <option value="Completada">Completada</option>
                         <option value="Incompleta">Incompleta</option>
                     </select>
                 </div>
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={handleSave}>Create</Button>{' '}
-                <Button color="secondary" onClick={toggle}>Cancel</Button>
+                <Button color="primary" onClick={handleSave} disabled={isCreateDisabled}>Crear</Button>{' '}
+                <Button color="secondary" onClick={toggle}>Cancelar</Button>
             </ModalFooter>
         </Modal>
     );
 };
-
-export default CreateTaskPopup;

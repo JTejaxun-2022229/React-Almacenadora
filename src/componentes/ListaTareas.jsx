@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import CreateTask from '../metodos/AgregarTarea'
+import { CreateTask } from '../metodos/AgregarTarea'
 import { Card } from './Carta';
+import '../styles/listaTareas.css'
 
 export const TaskList = () => {
     const [modal, setModal] = useState(false);
@@ -62,5 +63,5 @@ export const TaskList = () => {
             <CreateTask toggle={toggle} modal={modal} save={saveTask} />
         </>
     );
-    
+
 };

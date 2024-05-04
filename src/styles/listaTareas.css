@@ -1,0 +1,42 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #32508c;
+    color: #fff9f9;
+    z-index: 1000;
+}
+ 
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+ 
+.left-content img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+ 
+.right-content {
+    text-align: center;
+}
+ 
+.btn-primary {
+    background-color: #3215da;
+    border-color: #007bff;
+    margin-top: 20px;
+}
+ 
+.task-container {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}

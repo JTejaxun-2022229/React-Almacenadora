@@ -89,3 +89,5 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
 };
 
 export default CreateTaskPopup;
+
+// metodo para agregar

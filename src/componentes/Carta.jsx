@@ -26,7 +26,7 @@ export const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
     const formattedStartDate = taskObj.startDate ? new Date(taskObj.startDate).toLocaleDateString() : "";
 
     // Formatear la fecha de vencimiento
-    const formattedDueDate = taskObj.dueDate ? new Date(taskObj.dueDate).toLocaleDateString() : "";
+    const formattedDueDate = taskObj.DueDate ? new Date(taskObj.DueDate).toLocaleDateString() : "";
 
     return (
         <div className="custom-card">

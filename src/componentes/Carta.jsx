@@ -30,7 +30,7 @@ export const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
             <div className="custom-card-header" style={{ backgroundColor: colors[index % 5].primaryColor }}>{taskObj.Name}</div>
             <div className="custom-card-body">
                 <p>{taskObj.Description}</p>
-                <p>Author: {taskObj.Author}</p>
+                <p>Author: {taskObj.ReplacementName}</p>
                 <p>Start Date: {formattedStartDate}</p>
                 <p>Due Date: {formattedDueDate}</p>
                 <p>Status: {taskObj.Status}</p>

@@ -7,19 +7,27 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
 
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
+    const [startDate, setStartDate] = useState(null);
     const [dueDate, setDueDate] = useState(null);
     const [replacementName, setReplacementName] = useState('');
     const [status, setStatus] = useState('pendiente');
 
     const handleChange = (e) => {
+
         const { name, value } = e.target;
 
         if (name === "taskName") {
             setTaskName(value);
         } else if (name === "description") {
             setDescription(value);
+        } else if (name === "startDate") {
+            setStartDate(value);
+        } else if (name === "dueDate") {
+            setDueDate(value);
         } else if (name === "replacementName") {
             setReplacementName(value);
+        } else if (name === "status") {
+            setStatus(value);
         }
     };
 
@@ -29,6 +37,7 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
         let taskObj = {};
         taskObj["Name"] = taskName;
         taskObj["Description"] = description;
+        taskObj["startDate"] = startDate;
         taskObj["DueDate"] = dueDate;
         taskObj["ReplacementName"] = replacementName;
         taskObj["Status"] = status;
@@ -38,7 +47,7 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
     return (
 
         <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Create Task</ModalHeader>
+            <ModalHeader toggle={toggle}>Crear Tarea</ModalHeader>
             <ModalBody>
                 <div className="form-group">
                     <label>Nombre de la Tarea</label>
@@ -49,14 +58,9 @@ export const CreateTaskPopup = ({ modal, toggle, save }) => {
                     <textarea rows="5" className="form-control" value={description} onChange={handleChange} name="description"></textarea>
                 </div>
                 <div className="form-group">
-                    <label>Fecha de Finalizacion</label>
+                    <label>Fecha de Inicio</label>
                     <br />
-                    <DatePicker selected={dueDate} onChange={(date) => setDueDate(date)} className="form-control" />
-                </div>
-                <div className="form-group">
-                    <label>Fecha de Finalizacion</label>
-                    <br />
-                    <DatePicker selected={dueDate} onChange={(date) => setDueDate(date)} className="form-control" />
+                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} className="form-control" />
                 </div>
                 <div className="form-group">
                     <label>Fecha de Finalizacion</label>

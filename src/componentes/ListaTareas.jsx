@@ -44,30 +44,16 @@ export const TaskList = () => {
         setModal(false)
     }
 
-
-   /* return (
-        <>
-            <div className="header text-center">
-                <h3>Tareas de almacenadora</h3>
-                <button className="btn btn-primary mt-2" onClick={() => setModal(true)} >Create Task</button>
-            </div>
-            <div className="task-container">
-                {taskList && taskList.map((obj, index) => <Card taskObj={obj} index={index} deleteTask={deleteTask} updateListArray={updateListArray} />)}
-            </div>
-            <CreateTask toggle={toggle} modal={modal} save={saveTask} />
-        </>
-    );
-*/
     return (
         <>
             <div className="header text-center">
                 <div className="left-content">
-                    <img src="ruta-de-la-imagen.jpg" alt="Descripción de la imagen" />
-                    <p>Descripción del contenido izquierdo</p>
+                    <img src="./src/assets/almacenadoraLogo.png" width="100px" height="100%" alt="Descripción de la imagen" />
                 </div>
                 <div className="right-content">
-                    <h3>Tareas de almacenadora</h3>
-                    <button className="btn btn-primary mt-2" onClick={() => setModal(true)}>Create Task</button>
+                    <h3>Tareas de Almacenadora</h3>
+                    <p>Este es el area de gestion para las tareas de la almacenadora</p>
+                    <button className="btn btn-primary mt-2" onClick={() => setModal(true)}>Crear Tarea</button>
                 </div>
             </div>
             <div className="task-container">

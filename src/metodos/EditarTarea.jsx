@@ -24,6 +24,7 @@ export const EditTask = ({ modal, toggle, updateTask, taskObj }) => {
     }, [])
 
     const handleUpdate = (e) => {
+
         e.preventDefault();
         let tempObj = {}
         tempObj['Name'] = taskName

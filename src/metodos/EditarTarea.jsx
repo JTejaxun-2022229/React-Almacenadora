@@ -14,8 +14,6 @@ export const EditTask = ({ modal, toggle, updateTask, taskObj }) => {
         } else {
             setDescription(value)
         }
-
-
     }
 
     useEffect(() => {
